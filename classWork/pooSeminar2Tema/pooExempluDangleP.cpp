@@ -7,7 +7,7 @@ int* testFunc() {
     return &var;
 }
 
-int main() {
+int main() { 
     int* ptr=testFunc();
     //cout << ptr << endl;
 
@@ -29,4 +29,5 @@ int main() {
     free(vec);
     cout << *vec  << "  |  "<< vec << endl;
 
+    getchar();
 }

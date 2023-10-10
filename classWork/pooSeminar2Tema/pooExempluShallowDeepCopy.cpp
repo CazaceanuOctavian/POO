@@ -25,6 +25,7 @@ class ShallowStudClass{
     }
 };
 
+//=========================================//
 class DeepStudClassExp {
     public:
         string nume;
@@ -47,13 +48,46 @@ class DeepStudClassExp {
         cout<<"destructorul pentru studentul " << nume << " a fost apelat" << endl;
     }
 };
+//===========================================//
+
+class DeepStudClass {
+    public:
+        string nume;
+        int *varsta;
+    public:
+        DeepStudClass(){
+            varsta = NULL;
+        }
+
+        DeepStudClass(string numeVar, int* varstaVar) {
+            nume=numeVar;
+            varsta = new int;
+            
+        }
+
+        void afiseazaInfo(){
+            cout << nume << " | " << varsta << " | " << *varsta << endl;
+        }
+
+        //cpy constructor
+        DeepStudClass(DeepStudClass &obj) {
+            nume = obj.nume;
+            varsta = obj.varsta;
+            *varsta = *(obj.varsta);
+            *varsta = 10;
+        }
+    
+    ~DeepStudClass() {
+        cout<<"destructorul pentru studentul " << nume << " a fost apelat" << endl;
+    }
+};
 
 int main() {
     ShallowStudClass student1("bobita", 21), student2("bob", 20);
     student1.afiseazaInfo();
-    cout<<"================"<<endl;
+    cout<<endl;
     student2.afiseazaInfo();
-    cout<<"================"<<endl;
+    cout<<endl;
 
     //shallow copy
     student1=student2;
@@ -61,30 +95,46 @@ int main() {
     cout<<"dupa shallow copy: "<< endl;
 
     student1.afiseazaInfo();
-    cout<<"================"<<endl;
+    cout<<endl;
     student2.afiseazaInfo();
-    cout<<"================"<<endl;
+    cout<<endl;
 
-    cout<<"=================================="<<endl;
+    cout<<"[==================================] "<<endl;
+
     int varsta1=21, varsta2=20;
     int* ptrVarsta1=&varsta1, *ptrVarsta2=&varsta2;
-    //int* ptrTest = new int;
-    //ptrTest=&varsta1;
 
-    DeepStudClassExp DpStudent1("bobita", ptrVarsta1), DpStudent2("bob", ptrVarsta2);
+    DeepStudClassExp dpStudentExp1("bobita", ptrVarsta1), dpStudentExp2("bob", ptrVarsta2);
 
-    DpStudent1.afiseazaInfo();
-    cout<<"================"<<endl;
-    DpStudent2.afiseazaInfo();
-    cout<<"================"<<endl;
+    dpStudentExp1.afiseazaInfo();
+    cout<<endl;
+    dpStudentExp2.afiseazaInfo();
+    cout<<endl;
 
     //shallow copy
-    DpStudent1=DpStudent2;
+    dpStudentExp1=dpStudentExp2;
+    
+    cout<<"dupa shallow copy: "<< endl;
 
     varsta2=30;
 
-    DpStudent1.afiseazaInfo();
-    cout<<"================"<<endl;
-    DpStudent2.afiseazaInfo();
-    cout<<"================"<<endl;
+    dpStudentExp1.afiseazaInfo();
+    cout<<endl;
+    dpStudentExp2.afiseazaInfo();
+    cout<<endl;
+    cout<<"[==================================]"<<endl;
+
+    DeepStudClass dpStudent1("bobita", ptrVarsta1);
+    DeepStudClass dpStudent2 = dpStudent1;
+
+    dpStudent1.afiseazaInfo();
+    cout<<endl;
+    dpStudent2.afiseazaInfo();
+    cout<<endl;
+
+    //dpStudent1 = dpStudent2;
+
+    //varsta2 = 30;
+
+
 }
