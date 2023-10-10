@@ -1,0 +1,98 @@
+======================================================
+\						     \
+\			POO			     \
+\						     \
+======================================================
+
+Evaluare: 
+	50p examen --> problema orala
+	50p laborator (obligatoriu) --> 20p lucrare (noiembrie)
+					10p activitate seminar		(MINIM 2/5)
+					10p proiect		
+					10p test grila cu cod si teorie 
+					
+	---------------------------------------------------
+
+	include --> da prototipurile functiilor (directiva de preprocesare)
+	namespace --> se subantelege ca e o functie dintr-un anumit namespace (instructiune)
+					(rezolva conflicte de nume)
+	cout --> obiect de tip flux de date iesire
+	cout<< 1 <<(2<<3) --> 116 pt sa se shifteaza bitii 2 cu 3 poz care se alipesc la 1
+	
+	
+	
+	====================================
+	
+	
+	SEM 1
+	
+	
+	int x --> stim valoarea lui x si adresa lui x 
+		&x adresa lui x si x=5 val lui x
+		
+	int *x --> stim valoarea variabilei la care pointeaza pointerul
+		 *a (valoarea la care pointeaza a)  (dereferentiere)
+		**a (adresa pointerului a) 
+		
+		
+	heap --> malloc 
+	
+	
+	tema: Sa se implementeze func care primeste un vectior, dimensiunea sa si un nr k. Functia elimina din vector cele mai mar si cele mai mici k valori. Daca nu se poate returneaza NULL (fara a face sortare). O implementare pt un vector static si un vector dinamic 
+	
+	ex: v= 5 3 10 1 2 4 10 9 7 5 1
+	k=1 dispare 10 si 1 
+	
+	tema|: FUnctie care primeste un vector si dimensiunea sa si inlocuieste val max cu 0. Si pt vector alocat static si dinamic. 
+	
+	
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
