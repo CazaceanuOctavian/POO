@@ -32,7 +32,7 @@ class DeepStudClassExp {
         int *varsta;
     public:
         DeepStudClassExp(){
-
+            varsta = NULL;
         }
 
         DeepStudClassExp(string numeVar, int *varstaVar) {
@@ -61,8 +61,8 @@ class DeepStudClass {
 
         DeepStudClass(string numeVar, int* varstaVar) {
             nume=numeVar;
-            varsta = new int;
-            
+            varsta = varstaVar;
+
         }
 
         void afiseazaInfo(){
@@ -72,9 +72,8 @@ class DeepStudClass {
         //cpy constructor
         DeepStudClass(DeepStudClass &obj) {
             nume = obj.nume;
-            varsta = obj.varsta;
+            varsta = new int;
             *varsta = *(obj.varsta);
-            *varsta = 10;
         }
     
     ~DeepStudClass() {
@@ -116,7 +115,7 @@ int main() {
     
     cout<<"dupa shallow copy: "<< endl;
 
-    varsta2=30;
+    varsta2=15;
 
     dpStudentExp1.afiseazaInfo();
     cout<<endl;
@@ -132,9 +131,7 @@ int main() {
     dpStudent2.afiseazaInfo();
     cout<<endl;
 
-    //dpStudent1 = dpStudent2;
-
-    //varsta2 = 30;
+    //varsta1 = 10;
 
 
 }
