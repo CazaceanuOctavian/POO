@@ -28,6 +28,6 @@ int main() {
 
     free(vec);
     cout << *vec  << "  |  "<< vec << endl;
-
+    vec = NULL;
     getchar();
 }
