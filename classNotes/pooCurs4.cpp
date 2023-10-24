@@ -36,7 +36,7 @@ public:
     friend ostream& operator<<(ostream &ost, Pers &pers) {
         ost <<pers.marca<<" "<<pers.nume<<" "<<pers.salariu<<" lei" <<endl;
         ost <<"Venituri: ";
-        for(int i=0; i<nrJoburi; i++) {
+        for(int i=0; i<pers.nrJoburi; i++) {
             ost << pers.pVenit[i] << " ";
         }
         return ost;
@@ -44,12 +44,42 @@ public:
 
     ~Pers() {
         if(pVenit!=nullptr)
-            delete pVenit;
+            delete[] pVenit;
+    }
+
+    //supraincarcare &
+    //p1=p2 unde p2 este sursa
+    //p1 nonconst
+    //pun const ca sa protejez sursa pt ca nu vreau sa o prelucrez
+    Pers & operator =(const Pers &sursa) {
+        //protectie la autoasignare
+        //la autoasignare dezaloc si incerc sa copiez il el insusi o valoare dezalocata
+        if(this!=&sursa) {
+            this->salariu=sursa.salariu;
+            //ma asigur ca daca p1 avea deja valori le dezaloc pt nu avea memory leak
+            //daca preiau direct si el avea deja valori ele vor ramane in memorie si nu
+            //voi avea acces la ele 
+            if(pVenit!=nullptr)
+                delete[] pVenit;
+            if(nrJoburi>0) {
+                pVenit = new double[nrJoburi];
+                for(int i=0; i<nrJoburi; i++)
+                    pVenit[i] = sursa.pVenit[i];
+            }
+        else {
+            cerr << "ai incercat sa autoasignezi >:(";
+        }
+        }
     }
 
     Pers(Pers &sursa) : marca(sursa.marca) {
         salariu = sursa.salariu;
         strcpy(nume, sursa.nume);
+        if(nrJoburi>0) {
+            pVenit=new double[nrJoburi];
+            for(int i=0; i< nrJoburi; i++)
+                pVenit[i] = sursa.pVenit[i];
+        }
     }
     //getter
     int getMarca() {
