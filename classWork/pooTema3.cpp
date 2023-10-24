@@ -1,3 +1,4 @@
+//o modalitate mai eleganta de afisare a lui enum
 #include <iostream>
 #include <string.h>
 
@@ -86,12 +87,11 @@ class Tir {
             greutateColete=nullptr;
         }
         else {
-            esteIncarcat=false;
             cerr<<"apel invalid";
         }
     }
 
-    int* getGreutateColete() {
+    const int* getGreutateColete() {
         return greutateColete;
     }
 
@@ -102,13 +102,15 @@ class Tir {
     bool getStatusIncarcare() {
         return esteIncarcat;
     }
-
-    void setPerioadaFunctionare(int perioadaFunctionareData[12]) {
+    //primeste 12 de la 
+    void setPerioadaFunctionare(int perioadaFunctionareData[]) {
         for(int i=0; i<12; i++)
             perioadaFunctionareLuna[i]=perioadaFunctionareData[i];
     }
-
-    int* getPerioadaFunctionare() {
+    //se pune const ca sa protejez incapsularea
+    //daca nu pun const s-ar putea sa schimbe adresa 
+    //const se pune la pointeri
+    const int* getPerioadaFunctionare() {
         return perioadaFunctionareLuna;
     }
 
