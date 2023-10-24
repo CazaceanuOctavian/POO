@@ -122,6 +122,10 @@ public:
         if(aux!=nullptr)
             delete[] aux; 
     }
+
+    double salariu() const {
+        return salariu;
+    }
 };
 //initializare marca
 int Pers::nrPers=0;
@@ -135,7 +139,10 @@ int main() {
     //==========================================//
     //obiectul constrat nu poate fi modificat nici pe parti 
     //oc.salariu=1000 --> err
-    
+    //nu pot nici sa invoc metode 
+    //cout << oc.getSalariu();
+    //ca sa mearga trebuie sa scriu double getSalariu() const {}
+    //si atunci merge
     const Pers obiectConstant;
     Pers obicetVariabil;
 }
