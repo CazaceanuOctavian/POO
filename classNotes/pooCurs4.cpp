@@ -23,6 +23,10 @@ public:
 private:
     double salariu=10;    
 public:
+    Pers() {
+
+    }
+
     Pers(const char* n, double s, int nrJ=0, double *pV) : marca(++nrPers) {
         strcpy(nume, n);
         salariu = s;
@@ -101,6 +105,23 @@ public:
     Pers(Pers& src) : marca(src.marca) {
         
     }
+
+    //===========================================//
+    //incarc zona de memorie in aux
+    //variabilei membru al functiei dezaloc zona de memorie
+    //aloc o noua zona de memroie cu una mai mare
+    //copiez din zona aux in zona functiei membre
+    //dezaloc aux
+    //evit memoy leak!!
+    void addJob(double v) {
+        double* aux = pVenit; nrJoburi++;
+        pVenit = new double[nrJoburi];
+        for(int i=0; i<nrJoburi-1; i++)
+            pVenit[i] = aux[i];
+        pVenit[nrJoburi-1] = v;
+        if(aux!=nullptr)
+            delete[] aux; 
+    }
 };
 //initializare marca
 int Pers::nrPers=0;
@@ -110,4 +131,11 @@ int main() {
     //scrie si marca 
     //s-ar putea sa ma minta de ex atunci cand este apelat constructor de copiere
     cout << p1;
+
+    //==========================================//
+    //obiectul constrat nu poate fi modificat nici pe parti 
+    //oc.salariu=1000 --> err
+    
+    const Pers obiectConstant;
+    Pers obicetVariabil;
 }
