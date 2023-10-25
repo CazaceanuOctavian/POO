@@ -68,8 +68,8 @@ class GradinaZoo{
             if(nrTarife!=0 && tarifeIntrare!=nullptr) {
                 this->nrTarife=nrTarife;
                 this->tarifeIntrare = new int(sizeof(int)*nrTarife);
-                for(int i=0; i<nrTarife; i++)
-                    this->tarifeIntrare[i] = tarifeIntrare[i];
+                for(int i=0; i<sursa.nrTarife; i++)
+                    this->tarifeIntrare[i] = sursa.tarifeIntrare[i];
             }
             else {
                 this->nrTarife=0;
@@ -77,8 +77,9 @@ class GradinaZoo{
             }
             //??
             for(int i=0; i<12; i++)
-                this->tarifeIncasateLuna[i] = tarifeIncasateLuna[i];
+                this->tarifeIncasateLuna[i] = sursa.tarifeIncasateLuna[i];
         }
+
         void afisare() {
             cout<<"+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+"<<endl;
             cout << "Denumire: " << this->denumire << endl;
@@ -106,6 +107,14 @@ class GradinaZoo{
             }
             cout<<endl;
             cout<<"+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+~+"<<endl;
+        }
+
+        const char** getListaAnimale() {
+            return this->listaAnimale;
+        }
+
+        const int* getTarifeIntrare() {
+            return this->tarifeIntrare;
         }
 
         int getIncasariMax() {
@@ -155,7 +164,6 @@ class GradinaZoo{
             delete[] aux;
         }
 
-
         ~GradinaZoo() {
             delete[] this->listaAnimale;
             this->listaAnimale=nullptr;
@@ -172,8 +180,10 @@ int main() {
     strcpy(listaAnimale[1], "LEU");
     listaAnimale[2] = new char[7];
     strcpy(listaAnimale[2], "GAZELA");
+
     int tarife[]={15, 25, 50};
     int tarifeIncasateLuna[] = {1500, 1300, 8900, 5400, 1210, 0, 0, 9880, 1715, 7880, 0, 0};
+
     GradinaZoo zoo("AFRICA", 3, listaAnimale, 3, tarife, tarifeIncasateLuna);
     zoo.afisare();
 
