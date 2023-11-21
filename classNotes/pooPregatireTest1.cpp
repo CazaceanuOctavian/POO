@@ -126,6 +126,15 @@ class Sejur {
             return *this;
         }
 
+        bool operator<=(Sejur sursa) {
+            if(sursa.nrExcursiiOptionale>0 && sursa.pretExcursie!=nullptr) {
+                int max=-1;
+                for(int i=0; i<sursa.nrExcursiiOptionale; i++)
+                    if(sursa.pretExcursie[i]>max)
+                        max=sursa.pretExcursie[i];
+            }
+        }
+
         friend ostream& operator<<(ostream& out, const Sejur& sursa) {
             cout<<"=========================="<<endl;
             cout<<"id: "<<sursa.id << endl;
@@ -377,6 +386,8 @@ int main() {
     cout<<"supraincarcare operator float: "<<endl;
     float total = (float)sejurTotiParam;
     cout<<total<<endl;
+
+    sejurTotiParam = (float)5;
 
     cout<<"supraincarcare operator <<"<<endl;
     cout<<sejurTotiParam;
