@@ -22,4 +22,5 @@ public:
 int main() {
     MyClass y;
     cout<<y.calcPatrat(3);
+    int x = y.calcPatrat2(4);
 }
