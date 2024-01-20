@@ -69,7 +69,7 @@ class AgendaTelefon {
                 for(int i=0; i<this->nrApeluri; i++)
                     this->durataConvorbirii[i] = sursa.durataConvorbirii[i];
             }
-            if(provider!=nullptr) {
+            if(sursa.provider!=nullptr) {
                 this->provider = new char[strlen(sursa.provider) + 1];
                 strcpy(this->provider, sursa.provider);
             }
@@ -107,7 +107,7 @@ class AgendaTelefon {
                     for(int i=0; i<this->nrApeluri; i++)
                         this->durataConvorbirii[i] = sursa.durataConvorbirii[i];
                 }
-                if(provider!=nullptr) {
+                if(sursa.provider!=nullptr) {
                     this->provider = new char[strlen(sursa.provider) + 1];
                     strcpy(this->provider, sursa.provider);
                 }
@@ -116,6 +116,7 @@ class AgendaTelefon {
                 }
                 this->esteFix=sursa.esteFix;
                 }
+                return *this;
         }
         //postIncrementare;
         AgendaTelefon operator++(int) {
@@ -180,6 +181,7 @@ class AgendaTelefon {
 
         friend ostream& operator<<(ostream& ost, AgendaTelefon& sursa) {
             cout<<"==================================="<<endl;
+            cout<<"id consumator: "<<sursa.id<<endl;
             if(sursa.consumator!=nullptr)
                 cout<<"consumator: "<<sursa.consumator<<endl;
             else
@@ -279,15 +281,15 @@ class AgendaTelefon {
         }
 
         void setProvider(const char* provider) {
-        if(provider!=nullptr) {
-            delete[] this->provider;
-            this->provider=nullptr;
+            if(provider!=nullptr) {
+                delete[] this->provider;
+                this->provider=nullptr;
 
-            this->provider=new char[strlen(provider) + 1];
-            strcpy(this->provider, provider);
-            } 
-            else {
-             cerr<<"provider invalid"<<endl;
+                this->provider=new char[strlen(provider) + 1];
+                strcpy(this->provider, provider);
+                } 
+                else {
+                cerr<<"provider invalid"<<endl;
             }
         }
 
@@ -295,7 +297,7 @@ class AgendaTelefon {
             return this->provider;
         }
 
-        void setEsteFix(bool esteFix) {
+        void setEsteFix(const bool esteFix) {
             this->esteFix=esteFix;
         }
 
@@ -338,11 +340,6 @@ int main() {
     AgendaTelefon a3(2);
     a3 = a1;
     cout<<a3;
-
-    //todo --> testeaza
-    //AgendaTelefon a4(5);
-    //cin>>a4;
-    //cout<<a4;
 
     //--------------------
     cout<<"apel set/get provider: "<<endl;
@@ -388,6 +385,7 @@ int main() {
     int* timpApeluriNoi = new int[4];
     timpApeluriNoi[0] = 15;
     timpApeluriNoi[1] = -32;
+    //diferit de 40 din timpApeluri
     timpApeluriNoi[2] = 41;
     timpApeluriNoi[3] = -5;
 
@@ -397,5 +395,10 @@ int main() {
         cout<<"OPERATOR == TRUE"<<endl;
     else
         cout<<"OPERATOR == FALSE"<<endl;
+
+     
+    AgendaTelefon a20(5);
+    cin>>a20;
+    cout<<a20;
     
 }

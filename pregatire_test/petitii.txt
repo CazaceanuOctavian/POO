@@ -1,0 +1,6 @@
+=======================================
+numele depunatorului: bartolovici
+stare petitie: 2
+numar de semnaturi: 12
+petitia a fost pusa in ziua: 100
+=======================================
