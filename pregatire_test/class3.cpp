@@ -166,6 +166,29 @@ class WishList2 {
                 this->listaCadouri = nullptr;
         }
 
+         WishList2(const WishList2& sursa) {
+            if(sursa.detinator != nullptr) {
+                this->detinator = new char[strlen(sursa.detinator) + 1];
+                strcpy(this->detinator, sursa.detinator);
+            }
+            else
+                this->detinator = nullptr;
+            
+            if(sursa.nrCadouri > 0)
+                this->nrCadouri = sursa.nrCadouri;
+            else
+                this->nrCadouri = 0;
+
+            if(this->nrCadouri>0 && listaCadouri!=nullptr) {
+                this->listaCadouri = new Cadou[this->nrCadouri];
+                for(int i=0; i<this->nrCadouri; i++)
+                    this->listaCadouri[i] = sursa.listaCadouri[i];
+            }
+            else
+                this->listaCadouri = nullptr;
+        }
+
+
         friend ostream& operator<<(ostream& ost, const WishList2& sursa) {
             cout<<"------------------------------------------------"<<endl;
             if(sursa.detinator != nullptr)
@@ -188,6 +211,14 @@ class WishList2 {
             cout<<"------------------------------------------------"<<endl;
             return ost;
         }  
+
+        ~WishList2() {
+            delete[] this->listaCadouri;
+            this->listaCadouri = nullptr;
+
+            delete[] this->detinator;
+            this->detinator = nullptr;
+        }
 };
 
 int main() {
@@ -235,5 +266,8 @@ int main() {
     strcpy(nume, "marta");
     WishList2 list2_1(nume, 4, listaCadouNou);
     cout<<list2_1;
+
+    WishList2 listTest = list2_1;
+    cout<<listTest;
 
 }

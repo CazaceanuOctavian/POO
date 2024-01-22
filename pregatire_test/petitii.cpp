@@ -300,7 +300,4 @@ int main() {
     int res2 = rec1.strangeResurse();
     cout<<"VIRTUALIZARE RECLAMATII: "<<res2<<endl;
 
-    
-
-
 }
